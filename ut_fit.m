@@ -29,6 +29,12 @@ problem.x0 = x0;
 x = fmincon(problem);
 fprintf('Error: %.4g\n', ErrorFunc(x))
 
+% x = [log(0.0338) 0.0221 0.000315 log(0.0552) 0.9985 0 1.0];
+
+% Quality of fit
+quality = sum((DR_biaxial(x) - P11).^2 ./ P11);
+fprintf('Quality of the fit: %f\n', quality)
+
 fit = DR_biaxial(x);
 
 % Plotting
@@ -62,6 +68,6 @@ set(gcf,...
 set(gca,'FontName','Times New Roman');
 
 
-% print -dpdf -painters ut_fit
+print -dpdf -painters ut_fit
 hold off;
  
